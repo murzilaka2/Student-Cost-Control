@@ -1,0 +1,89 @@
+﻿create database CostControl;
+use CostControl;
+
+
+create table [User](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[Login] varchar(250) NOT NULL,
+[Password] varchar(250) NOT NULL,
+[Email] varchar(250) NOT NULL,
+[FIO] varchar(250),
+[About] ntext
+)
+select * from [User]
+insert into [User] values ('admin','4E2CE2032050AAB2E8EE207F179F019A','enykoruna1@gmail.com','','')
+
+create table [Settings](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[UserID] int NOT NULL,
+[Currency] ntext NOT NULL
+)
+
+insert into [Settings] values (1,'Hryvnia &#8372;');
+
+create table [ConsumptionCategory](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[Name] ntext NOT NULL
+)
+
+create table [IncomeCategory](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[Name] ntext NOT NULL
+)
+
+create table [Consumption](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[UserID] int NOT NULL,
+[Name] ntext NOT NULL,
+[Sum] decimal NOT NULL,
+[Currency] ntext NOT NULL,
+[Date] Date NOT NULL,
+[Definition] ntext,
+[Description] ntext
+)
+
+
+insert into [Consumption] values (1,'Phone',225.50,'Hryvnia &#8372;','2020.05.10','','')
+insert into [Consumption] values (1,'Kievstar',558,'Hryvnia &#8372;','2020.05.08','','')
+insert into [Consumption] values (1,'Internet',1352,'Hryvnia &#8372;','2020.05.07','','')
+insert into [Consumption] values (1,'products',213,'Hryvnia &#8372;','2020.05.06','','')
+
+select * from [Consumption]
+
+create table [Income](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[UserID] int NOT NULL,
+[Name] ntext NOT NULL,
+[Sum] decimal NOT NULL,
+[Currency] ntext NOT NULL,
+[Date] DateTime NOT NULL,
+[Definition] ntext,
+[Description] ntext
+)
+
+insert into [Income] values (1,'Web Item',500.50,'Hryvnia &#8372;','2020.06.01','','')
+insert into [Income] values (1,'Salary',1200,'Hryvnia &#8372;','2020.06.01','','')
+insert into [Income] values (1,'Topol',6000,'Hryvnia &#8372;','2020.06.01','','')
+insert into [Income] values (1,'Tayn',7000,'Hryvnia &#8372;','2020.06.01','','')
+insert into [Income] values (1,'Car Drive',300,'Hryvnia &#8372;','2020.06.02','','')
+insert into [Income] values (1,'Nova Poshta',1200,'Hryvnia &#8372;','2020.06.03','','')
+insert into [Income] values (1,'Seo Analysis',600,'Hryvnia &#8372;','2020.06.04','','')
+insert into [Income] values (1,'Producr Back',150,'Hryvnia &#8372;','2020.06.05','','')
+insert into [Income] values (1,'Deposit',1300,'Hryvnia &#8372;','2020.05.05','','')
+
+create table [Debts](
+[ID] int NOT NULL IDENTITY PRIMARY KEY,
+[UserID] int NOT NULL,
+[Name] ntext NOT NULL,
+[Currency] ntext NOT NULL,
+[Sum] decimal NOT NULL,
+[Type] varchar(250) NOT NULL,
+[LoanDate] DateTime NOT NULL,
+[ReturnDate] DateTime NOT NULL,
+[Description] ntext
+)
+
+insert into [Debts] values (1,'Одолжил Игорю денег','Hryvnia &#8372;',26000,'Lent','2019.03.05','2019.08.05','')
+
+select * from [Debts]
+
